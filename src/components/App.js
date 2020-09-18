@@ -10,21 +10,23 @@ function App() {
   const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] = React.useState(
     false
   );
+  // хук состояния попапа редактирования профиля
+  const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] = React.useState(
+    false
+  );
+  // хук состояния попапа с формой добавления карточки
+  const [isAddPlacePopupOpen, setIsAddPlacePopupOpen] = React.useState(false);
   // открытие попапа для редактирования аватара
   const handleEditAvatarClick = () => {
     setIsEditAvatarPopupOpen(true);
   };
   // открытия попапа для редактирования профиля
   const handleEditProfileClick = () => {
-    document
-      .querySelector(".popup_function_edit")
-      .classList.add("popup_opened");
+    setIsEditProfilePopupOpen(true);
   };
   // открытие попапа для добавление новой карточки
   const handleAddPlaceClick = () => {
-    document
-      .querySelector(".popup_function_add-element")
-      .classList.add("popup_opened");
+    setIsAddPlacePopupOpen(true);
   };
   return (
     <div className="root">
@@ -41,6 +43,7 @@ function App() {
         name="edit"
         title="Редактировать профиль"
         buttonName="Сохранить"
+        isOpen={isEditProfilePopupOpen ? "popup_opened" : ""}
       >
         <label className="popup__item-control">
           <input
@@ -79,6 +82,7 @@ function App() {
         name="add-element"
         title="Новое место"
         buttonName="Добавить место"
+        isOpen={isAddPlacePopupOpen ? "popup_opened" : ""}
       />
       <PopupWithForm name="question" title="Вы уверены?" buttonName="Да" />
       <div className="popup popup_function_open-element">
