@@ -28,6 +28,13 @@ function App() {
   const handleAddPlaceClick = () => {
     setIsAddPlacePopupOpen(true);
   };
+  // обработчик закрытия попапов
+  const closeAllPopups = () => {
+    setIsEditAvatarPopupOpen(false);
+    setIsEditProfilePopupOpen(false);
+    setIsAddPlacePopupOpen(false);
+  };
+  //
   return (
     <div className="root">
       <div className="page">
@@ -44,6 +51,7 @@ function App() {
         title="Редактировать профиль"
         buttonName="Сохранить"
         isOpen={isEditProfilePopupOpen ? "popup_opened" : ""}
+        onClose={closeAllPopups}
       >
         <label className="popup__item-control">
           <input
@@ -77,12 +85,14 @@ function App() {
         title="Обновить аватар"
         buttonName="Изменить"
         isOpen={isEditAvatarPopupOpen ? "popup_opened" : ""}
+        onClose={closeAllPopups}
       />
       <PopupWithForm
         name="add-element"
         title="Новое место"
         buttonName="Добавить место"
         isOpen={isAddPlacePopupOpen ? "popup_opened" : ""}
+        onClose={closeAllPopups}
       />
       <PopupWithForm name="question" title="Вы уверены?" buttonName="Да" />
       <div className="popup popup_function_open-element">
