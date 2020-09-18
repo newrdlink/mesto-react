@@ -1,0 +1,28 @@
+import React from "react";
+
+function PopupWithForm({ children, name, title, buttonName }) {
+  return (
+    <section className={`popup popup_function_${name}`}>
+      <div className="popup__container">
+        <button
+          type="button"
+          className="popup__button-close popup__button-close_place_edit-popup"
+        ></button>
+        <h2 className="popup__title">{title}</h2>
+        <form name="profile" action="url" className="popup__popup" noValidate>
+          <fieldset className="popup__content">
+            {children}
+            <button
+              type="submit"
+              className="popup__button popup__button_disabled"
+            >
+              {buttonName}
+            </button>
+          </fieldset>
+        </form>
+      </div>
+    </section>
+  );
+}
+
+export default PopupWithForm;
