@@ -3,21 +3,35 @@ import { useState, useEffect } from "react";
 import api from "../utils/Api";
 
 function Main({ onEditProfile, onAddPlace, onEditAvatar }) {
-  // хук состояния userName
+  // хук состояния userData
   const [userName, setUserName] = useState([]);
+  const [userDescription, setUserDescription] = useState([]);
+  const [userAvatar, setUserAvatar] = useState([]);
   // хук эффект при монтировании компонента
+  // React.useEffect(() => {
+  //   api.getUserData().then((res) => {
+  //     setUserName(res);
+  //   });
+  // }, []);
   React.useEffect(() => {
-    api.getUserData().then((res) => {
-      setUserName(res);
+    api.getAppStartInfo().then((res) => {
+      const [userData, cardsBackend] = res;
+      setUserName(userData.name);
+      setUserDescription(userData.about);
+      setUserAvatar(userData.avatar);
     });
-  }, []);
+  });
   //
   return (
     <main className="main">
       <section className="profile">
-        <button className="profile__image" onClick={onEditAvatar}></button>
-        <h1 className="profile__title">{userName.name}</h1>
-        <p className="profile__subtitle">{userName.about}</p>
+        <button
+          className="profile__image"
+          onClick={onEditAvatar}
+          style={{ backgroundImage: `url(${userAvatar})` }}
+        ></button>
+        <h1 className="profile__title">{userName}</h1>
+        <p className="profile__subtitle">{userDescription}</p>
         <button
           type="button"
           className="profile__edit"
