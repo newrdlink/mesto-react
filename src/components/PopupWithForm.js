@@ -1,8 +1,8 @@
 import React from "react";
 
-function PopupWithForm({ children, name, title, buttonName }) {
+function PopupWithForm({ children, name, title, buttonName, isOpen }) {
   return (
-    <section className={`popup popup_function_${name}`}>
+    <section className={`popup popup_function_${name} ${isOpen}`}>
       <div className="popup__container">
         <button
           type="button"

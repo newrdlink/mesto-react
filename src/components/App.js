@@ -6,11 +6,13 @@ import Footer from "../components/Footer";
 import "../index.css";
 
 function App() {
+  // хук состояния попапа c аватаром
+  const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] = React.useState(
+    false
+  );
   // открытие попапа для редактирования аватара
   const handleEditAvatarClick = () => {
-    document
-      .querySelector(".popup_function_edit-avatar")
-      .classList.add("popup_opened");
+    setIsEditAvatarPopupOpen(true);
   };
   // открытия попапа для редактирования профиля
   const handleEditProfileClick = () => {
@@ -71,6 +73,7 @@ function App() {
         name="edit-avatar"
         title="Обновить аватар"
         buttonName="Изменить"
+        isOpen={isEditAvatarPopupOpen ? "popup_opened" : ""}
       />
       <PopupWithForm
         name="add-element"
