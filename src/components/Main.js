@@ -1,43 +1,21 @@
 import React from "react";
 
-function Main() {
-  // открытие попапа для редактирования аватара
-  function handleEditAvatarClick() {
-    document
-      .querySelector(".popup_function_edit-avatar")
-      .classList.add("popup_opened");
-  }
-  // открытия попапа для редактирования профиля
-  function handleEditProfileClick() {
-    document
-      .querySelector(".popup_function_edit")
-      .classList.add("popup_opened");
-  }
-  // открытие попапа для добавление новой карточки
-  function handleAddPlaceClick() {
-    document
-      .querySelector(".popup_function_add-element")
-      .classList.add("popup_opened");
-  }
-
+function Main({ onEditProfile, onAddPlace, onEditAvatar }) {
   return (
     <main className="main">
       <section className="profile">
-        <button
-          className="profile__image"
-          onClick={handleEditAvatarClick}
-        ></button>
+        <button className="profile__image" onClick={onEditAvatar}></button>
         <h1 className="profile__title">Жак-Ив Кусто</h1>
         <p className="profile__subtitle">Исследователь океана</p>
         <button
           type="button"
           className="profile__edit"
-          onClick={handleEditProfileClick}
+          onClick={onEditProfile}
         ></button>
         <button
           type="button"
           className="profile__button"
-          onClick={handleAddPlaceClick}
+          onClick={onAddPlace}
         ></button>
       </section>
       <div className="places">

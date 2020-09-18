@@ -6,11 +6,33 @@ import Footer from "../components/Footer";
 import "../index.css";
 
 function App() {
+  // открытие попапа для редактирования аватара
+  const handleEditAvatarClick = () => {
+    document
+      .querySelector(".popup_function_edit-avatar")
+      .classList.add("popup_opened");
+  };
+  // открытия попапа для редактирования профиля
+  const handleEditProfileClick = () => {
+    document
+      .querySelector(".popup_function_edit")
+      .classList.add("popup_opened");
+  };
+  // открытие попапа для добавление новой карточки
+  const handleAddPlaceClick = () => {
+    document
+      .querySelector(".popup_function_add-element")
+      .classList.add("popup_opened");
+  };
   return (
     <div className="root">
       <div className="page">
         <Header />
-        <Main />
+        <Main
+          onEditAvatar={handleEditAvatarClick}
+          onEditProfile={handleEditProfileClick}
+          onAddPlace={handleAddPlaceClick}
+        ></Main>
         <Footer />
       </div>
       <PopupWithForm
