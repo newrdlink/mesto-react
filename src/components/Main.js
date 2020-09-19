@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import api from "../utils/Api";
 import Card from "../components/Card";
 
-function Main({ onEditProfile, onAddPlace, onEditAvatar }) {
+function Main({ onEditProfile, onAddPlace, onEditAvatar, handleCardClick }) {
   // хук состояния userData и Cards
   const [userName, setUserName] = useState([]);
   const [userDescription, setUserDescription] = useState([]);
@@ -44,7 +44,11 @@ function Main({ onEditProfile, onAddPlace, onEditAvatar }) {
       <div className="places">
         <ul className="elements">
           {cards.map((card) => (
-            <Card key={card._id} card={card} />
+            <Card
+              key={card._id}
+              card={card}
+              handleCardClick={handleCardClick}
+            />
           ))}
         </ul>
       </div>

@@ -1,10 +1,15 @@
 import React from "react";
 
-function Card({ card }) {
+function Card({ card, handleCardClick }) {
   //console.log(card._id);
   return (
     <li className="element">
-      <img src={card.link} alt="Фотография" className="element__image" />
+      <img
+        src={card.link}
+        alt="Фотография"
+        className="element__image"
+        onClick={() => handleCardClick(card)}
+      />
       <button type="button" className="element__basket"></button>
       <div className="element__content">
         <h3 className="element__title">{card.name}</h3>

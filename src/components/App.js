@@ -18,7 +18,7 @@ function App() {
   const [isAddPlacePopupOpen, setIsAddPlacePopupOpen] = React.useState(false);
   // хук
   const [selectedCard, setSelectedCard] = useState(false);
-  const handleCardClick = () => {
+  const handleCardClick = (data) => {
     setSelectedCard(true);
   };
   // открытие попапа для редактирования аватара
@@ -49,6 +49,7 @@ function App() {
           onEditAvatar={handleEditAvatarClick}
           onEditProfile={handleEditProfileClick}
           onAddPlace={handleAddPlaceClick}
+          onCardClick={handleCardClick}
         ></Main>
         <Footer />
       </div>
