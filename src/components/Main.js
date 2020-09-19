@@ -1,26 +1,24 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import api from "../utils/Api";
+import Card from "../components/Card";
 
 function Main({ onEditProfile, onAddPlace, onEditAvatar }) {
-  // хук состояния userData
+  // хук состояния userData и Cards
   const [userName, setUserName] = useState([]);
   const [userDescription, setUserDescription] = useState([]);
   const [userAvatar, setUserAvatar] = useState([]);
+  const [cards, setCards] = useState([]);
   // хук эффект при монтировании компонента
-  // React.useEffect(() => {
-  //   api.getUserData().then((res) => {
-  //     setUserName(res);
-  //   });
-  // }, []);
-  React.useEffect(() => {
-    api.getAppStartInfo().then((res) => {
-      const [userData, cardsBackend] = res;
+  useEffect(() => {
+    api.getAppStartInfo().then((data) => {
+      const [userData, cardsBackend] = data;
       setUserName(userData.name);
       setUserDescription(userData.about);
       setUserAvatar(userData.avatar);
+      setCards(cardsBackend);
     });
-  });
+  }, []);
   //
   return (
     <main className="main">
@@ -44,7 +42,11 @@ function Main({ onEditProfile, onAddPlace, onEditAvatar }) {
         ></button>
       </section>
       <div className="places">
-        <ul className="elements"></ul>
+        <ul className="elements">
+          {cards.map((card, idx) => (
+            <Card key={idx} card={card} />
+          ))}
+        </ul>
       </div>
     </main>
   );
