@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Header from "../components/Header";
 import PopupWithForm from "../components/PopupWithForm";
 import Main from "../components/Main";
@@ -16,6 +16,11 @@ function App() {
   );
   // хук состояния попапа с формой добавления карточки
   const [isAddPlacePopupOpen, setIsAddPlacePopupOpen] = React.useState(false);
+  // хук
+  const [selectedCard, setSelectedCard] = useState(false);
+  const handleCardClick = () => {
+    setSelectedCard(true);
+  };
   // открытие попапа для редактирования аватара
   const handleEditAvatarClick = () => {
     setIsEditAvatarPopupOpen(true);
@@ -33,6 +38,7 @@ function App() {
     setIsEditAvatarPopupOpen(false);
     setIsEditProfilePopupOpen(false);
     setIsAddPlacePopupOpen(false);
+    setSelectedCard(false);
   };
   //
   return (
@@ -111,7 +117,7 @@ function App() {
           </figcaption>
         </figure>
       </div>
-      <template id="element" className="element-template">
+      {/* <template id="element" className="element-template">
         <li className="element">
           <img
             src="https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg"
@@ -127,7 +133,7 @@ function App() {
             </div>
           </div>
         </li>
-      </template>
+      </template> */}
     </div>
   );
 }

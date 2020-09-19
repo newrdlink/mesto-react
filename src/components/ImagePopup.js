@@ -1,6 +1,6 @@
 import React from "react";
 
-function ImagePopup() {
+function ImagePopup(onClose) {
   return (
     <div className="popup popup_function_open-element">
       <figure className="popup__image-content">
