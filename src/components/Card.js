@@ -1,7 +1,7 @@
 import React from "react";
 
 function Card({ card }) {
-  //console.log(card.idx);
+  console.log(card._id);
   return (
     <li className="element">
       <img src={card.link} alt="Фотография" className="element__image" />

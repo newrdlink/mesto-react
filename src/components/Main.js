@@ -43,8 +43,8 @@ function Main({ onEditProfile, onAddPlace, onEditAvatar }) {
       </section>
       <div className="places">
         <ul className="elements">
-          {cards.map((card, idx) => (
-            <Card key={idx} card={card} />
+          {cards.map((card) => (
+            <Card key={card._id} card={card} />
           ))}
         </ul>
       </div>
