@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Header from "../components/Header";
 import PopupWithForm from "../components/PopupWithForm";
+import ImagePopup from "../components/ImagePopup";
 import Main from "../components/Main";
 import Footer from "../components/Footer";
 import "../index.css";
@@ -87,6 +88,7 @@ function App() {
           <span className="popup__item-error" id="about-error"></span>
         </label>
       </PopupWithForm>
+      <ImagePopup card={selectedCard} />
       <PopupWithForm
         name="edit-avatar"
         title="Обновить аватар"
