@@ -1,10 +1,12 @@
 import React from "react";
 
-function ImagePopup({ onClose, card }) {
+function ImagePopup({ onClose, card, opened }) {
   console.log(card);
   return (
     <div
-      className={`popup popup_function_open-element ${card && "popup_opened"}`}
+      className={`popup popup_function_open-element ${
+        opened ? "popup_opened" : ""
+      }`}
     >
       <figure className="popup__image-content">
         <button
@@ -12,8 +14,8 @@ function ImagePopup({ onClose, card }) {
           className="popup__button-close popup__button-close_place_open-element"
         ></button>
         <img
-          src="https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg"
-          alt="Фотография"
+          src={card.link}
+          alt={`Фотография ` + card.name}
           className="popup__image"
         />
         <figcaption className="popup__image-caption">

@@ -41,7 +41,6 @@ function App() {
     setCard(data);
     console.log(data.name);
   };
-
   //
   return (
     <div className="root">
@@ -89,7 +88,7 @@ function App() {
           <span className="popup__item-error" id="about-error"></span>
         </label>
       </PopupWithForm>
-      <ImagePopup card={card} />
+      <ImagePopup card={card} opened={selectedCard} />
       <PopupWithForm
         name="edit-avatar"
         title="Обновить аватар"
