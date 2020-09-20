@@ -1,7 +1,6 @@
 import React from "react";
 
-function ImagePopup({ onClose, card, opened }) {
-  console.log(card);
+function ImagePopup({ onClose, card, opened }) {  
   return (
     <div
       className={`popup popup_function_open-element ${
@@ -12,6 +11,7 @@ function ImagePopup({ onClose, card, opened }) {
         <button
           type="button"
           className="popup__button-close popup__button-close_place_open-element"
+          onClick={onClose}
         ></button>
         <img
           src={card.link}
@@ -19,7 +19,7 @@ function ImagePopup({ onClose, card, opened }) {
           className="popup__image"
         />
         <figcaption className="popup__image-caption">
-          Это подпись картинки
+          {`Фотография ` + card.name}
         </figcaption>
       </figure>
     </div>

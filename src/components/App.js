@@ -39,7 +39,6 @@ function App() {
   const onCardClick = (data) => {
     setSelectedCard(true);
     setCard(data);
-    console.log(data.name);
   };
   //
   return (
@@ -88,7 +87,7 @@ function App() {
           <span className="popup__item-error" id="about-error"></span>
         </label>
       </PopupWithForm>
-      <ImagePopup card={card} opened={selectedCard} />
+      <ImagePopup card={card} opened={selectedCard} onClose={closeAllPopups} />
       <PopupWithForm
         name="edit-avatar"
         title="Обновить аватар"
