@@ -1,68 +1,43 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Проектная работа №10
 
-## Available Scripts
+---
 
-In the project directory, you can run:
+### Данная работа, - результат прохождения 4 курса
 
-### `npm start`
+### по программе **Веб-разработчик**
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### в [Яндекс.Практикуме](https://praktikum.yandex.ru/)
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+#### При выполнении работы был создан функционал живой валидации полей ввода для форм;
 
-### `npm test`
+#### в работе приминен javascript, созданы слушатели для разных действий польователя;
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+#### применялся модуль Grid, а также медиазапросы для корректного;
 
-### `npm run build`
+#### использовалось ООП;
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+#### впервые использовался React;
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+#### впервые использовались запросы на удаленный сервер;
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+#### впервые использовалась сборка проекта Вебпаком;
 
-### `npm run eject`
+#### отображения на устройствах с разным разрешением;
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+#### добавлена функциональность валидации полей ввода для пользователя.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+#### Описание проекта:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+- реализация средствами html, css, javascript;
+- использование гридов при построении сетки;
+- занесение в DOM содержимого переданного через форму;
+- испольование реакта;
+- верстка блока средствами Grid;
+- возможность удаление блоков с DOM с помощью JS;
+- живая валидация средствами JS;
+- использование ООП;
+- использование fetch запросов на сервер;
+- использование Wabpack;
+- использование JS для закрытие попапов с помощью кунопок клавиатуры;
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+### Ссылка на проект на [Гитхаб](https://newrdlink.github.io/mesto/src/index.html)
