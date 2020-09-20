@@ -15,6 +15,7 @@ function App() {
   );
   const [isAddPlacePopupOpen, setIsAddPlacePopupOpen] = React.useState(false);
   const [selectedCard, setSelectedCard] = useState(false);
+  const [card, setCard] = useState([null]);
   // открытие попапа для редактирования аватара
   const handleEditAvatarClick = () => {
     setIsEditAvatarPopupOpen(true);
@@ -37,8 +38,10 @@ function App() {
   //
   const onCardClick = (data) => {
     setSelectedCard(true);
+    setCard(data);
     console.log(data.name);
   };
+
   //
   return (
     <div className="root">
@@ -86,7 +89,7 @@ function App() {
           <span className="popup__item-error" id="about-error"></span>
         </label>
       </PopupWithForm>
-      <ImagePopup card={selectedCard} />
+      <ImagePopup card={card} />
       <PopupWithForm
         name="edit-avatar"
         title="Обновить аватар"

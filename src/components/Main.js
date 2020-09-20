@@ -8,7 +8,7 @@ function Main({ onEditProfile, onAddPlace, onEditAvatar, handleCardClick }) {
   const [userName, setUserName] = useState([]);
   const [userDescription, setUserDescription] = useState([]);
   const [userAvatar, setUserAvatar] = useState([]);
-  const [cards, setCards] = useState([]);
+  const [cards, setCards] = useState([]);  
   // хук эффект при монтировании компонента
   useEffect(() => {
     api.getAppStartInfo().then((data) => {
