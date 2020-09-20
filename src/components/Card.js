@@ -8,7 +8,7 @@ function Card({ card, handleCardClick }) {
         src={card.link}
         alt="Фотография"
         className="element__image"
-        onClick={handleCardClick}
+        onClick={() => handleCardClick(card)}
       />
       <button type="button" className="element__basket"></button>
       <div className="element__content">
