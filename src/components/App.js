@@ -35,7 +35,7 @@ function App() {
     setSelectedCard(false);
   };
   //
-  const handleCardClick = (data) => {
+  const onCardClick = (data) => {
     setSelectedCard(true);
     console.log(data.name);
   };
@@ -48,7 +48,7 @@ function App() {
           onEditAvatar={handleEditAvatarClick}
           onEditProfile={handleEditProfileClick}
           onAddPlace={handleAddPlaceClick}
-          handleCardClick={handleCardClick}
+          handleCardClick={onCardClick}
         ></Main>
         <Footer />
       </div>
