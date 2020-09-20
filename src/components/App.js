@@ -7,21 +7,14 @@ import Footer from "../components/Footer";
 import "../index.css";
 
 function App() {
-  // хук состояния попапа c аватаром
   const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] = React.useState(
     false
   );
-  // хук состояния попапа редактирования профиля
   const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] = React.useState(
     false
   );
-  // хук состояния попапа с формой добавления карточки
   const [isAddPlacePopupOpen, setIsAddPlacePopupOpen] = React.useState(false);
-  // хук
   const [selectedCard, setSelectedCard] = useState(false);
-  const handleCardClick = (data) => {
-    setSelectedCard(true);
-  };
   // открытие попапа для редактирования аватара
   const handleEditAvatarClick = () => {
     setIsEditAvatarPopupOpen(true);
@@ -40,6 +33,10 @@ function App() {
     setIsEditProfilePopupOpen(false);
     setIsAddPlacePopupOpen(false);
     setSelectedCard(false);
+  };
+  //
+  const handleCardClick = (data) => {
+    setSelectedCard(true);
   };
   //
   return (
@@ -104,39 +101,6 @@ function App() {
         onClose={closeAllPopups}
       />
       <PopupWithForm name="question" title="Вы уверены?" buttonName="Да" />
-      <div className="popup popup_function_open-element">
-        <figure className="popup__image-content">
-          <button
-            type="button"
-            className="popup__button-close popup__button-close_place_open-element"
-          ></button>
-          <img
-            src="https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg"
-            alt="Фотография"
-            className="popup__image"
-          />
-          <figcaption className="popup__image-caption">
-            Это подпись картинки
-          </figcaption>
-        </figure>
-      </div>
-      {/* <template id="element" className="element-template">
-        <li className="element">
-          <img
-            src="https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg"
-            alt="Фотография"
-            className="element__image"
-          />
-          <button type="button" className="element__basket"></button>
-          <div className="element__content">
-            <h3 className="element__title"></h3>
-            <div className="element__likes">
-              <button type="button" className="element__heart"></button>
-              <span className="element__number-likes"></span>
-            </div>
-          </div>
-        </li>
-      </template> */}
     </div>
   );
 }
