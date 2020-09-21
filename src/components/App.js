@@ -67,6 +67,7 @@ function App() {
             className="popup__item popup__item_type_name"
             //value=""
             //autoComplete="off"
+            placeholder="Рашетников"
             minLength="2"
             maxLength="40"
             required
@@ -80,6 +81,7 @@ function App() {
             className="popup__item popup__item_type_about"
             //value=""
             //autoСomplete="off"
+            placeholder="Опять двойка"
             minLength="2"
             maxLength="200"
             required
@@ -101,7 +103,32 @@ function App() {
         buttonName="Добавить место"
         isOpen={isAddPlacePopupOpen ? "popup_opened" : ""}
         onClose={closeAllPopups}
-      />
+      >
+        <label>
+          <input
+            name="name-element"
+            type="text"
+            className="popup__item popup__item_type_add-name-element"
+            //value=""
+            placeholder="Название"
+            minLength="1"
+            maxLength="30"
+            required
+          />
+          <span className="popup__item-error" id="name-element-error"></span>
+        </label>
+        <label>
+          <input
+            name="link-element"
+            type="url"
+            className="popup__item popup__item_type_add-link-element"
+            //value=""
+            placeholder="Ссылка на картинку"
+            required
+          />
+          <span className="popup__item-error" id="link-element-error"></span>
+        </label>
+      </PopupWithForm>
       <PopupWithForm name="question" title="Вы уверены?" buttonName="Да" />
     </div>
   );

@@ -5,19 +5,22 @@ import Card from "../components/Card";
 
 function Main({ onEditProfile, onAddPlace, onEditAvatar, handleCardClick }) {
   // хук состояния userData и Cards
-  const [userName, setUserName] = useState([]);
-  const [userDescription, setUserDescription] = useState([]);
-  const [userAvatar, setUserAvatar] = useState([]);
-  const [cards, setCards] = useState([]);  
+  const [userName, setUserName] = useState("");
+  const [userDescription, setUserDescription] = useState("");
+  const [userAvatar, setUserAvatar] = useState("");
+  const [cards, setCards] = useState([]);
   // хук эффект при монтировании компонента
   useEffect(() => {
-    api.getAppStartInfo().then((data) => {
-      const [userData, cardsBackend] = data;
-      setUserName(userData.name);
-      setUserDescription(userData.about);
-      setUserAvatar(userData.avatar);
-      setCards(cardsBackend);
-    });
+    api
+      .getAppStartInfo()
+      .then((data) => {
+        const [userData, cardsBackend] = data;
+        setUserName(userData.name);
+        setUserDescription(userData.about);
+        setUserAvatar(userData.avatar);
+        setCards(cardsBackend);
+      })
+      .catch((err) => console.error(err));
   }, []);
   //
   return (

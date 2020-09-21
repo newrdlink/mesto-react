@@ -10,7 +10,7 @@ function PopupWithForm({ children, name, title, buttonName, isOpen, onClose }) {
           onClick={onClose}
         ></button>
         <h2 className="popup__title">{title}</h2>
-        <form name="profile" action="url" className="popup__popup" noValidate>
+        <form name="profile" className="popup__popup" noValidate>
           <fieldset className="popup__content">
             {children}
             <button
