@@ -14,8 +14,8 @@ function App() {
     false
   );
   const [isAddPlacePopupOpen, setIsAddPlacePopupOpen] = React.useState(false);
-  const [selectedCard, setSelectedCard] = useState(false);
-  const [card, setCard] = useState([null]);
+  const [selectedCard, setSelectedCard] = useState({});
+  // const [card, setCard] = useState([null]);
   // открытие попапа для редактирования аватара
   const handleEditAvatarClick = () => {
     setIsEditAvatarPopupOpen(true);
@@ -33,13 +33,14 @@ function App() {
     setIsEditAvatarPopupOpen(false);
     setIsEditProfilePopupOpen(false);
     setIsAddPlacePopupOpen(false);
-    setSelectedCard(false);
+    setSelectedCard({});
   };
   //
-  const onCardClick = (data) => {
-    setSelectedCard(true);
-    setCard(data);
+  const handleCardClick = (selectedCard) => {
+    setSelectedCard(selectedCard);
+    //setCard(data);
   };
+  //console.log(selectedCard);
   //
   return (
     <div className="root">
@@ -49,7 +50,7 @@ function App() {
           onEditAvatar={handleEditAvatarClick}
           onEditProfile={handleEditProfileClick}
           onAddPlace={handleAddPlaceClick}
-          handleCardClick={onCardClick}
+          handleCardClick={handleCardClick}
         ></Main>
         <Footer />
       </div>
@@ -89,7 +90,7 @@ function App() {
           <span className="popup__item-error" id="about-error"></span>
         </label>
       </PopupWithForm>
-      <ImagePopup card={card} opened={selectedCard} onClose={closeAllPopups} />
+      <ImagePopup card={selectedCard} onClose={closeAllPopups} />
       <PopupWithForm
         name="edit-avatar"
         title="Обновить аватар"
