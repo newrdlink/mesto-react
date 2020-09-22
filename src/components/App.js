@@ -96,7 +96,19 @@ function App() {
         buttonName="Изменить"
         isOpen={isEditAvatarPopupOpen ? "popup_opened" : ""}
         onClose={closeAllPopups}
-      />
+      >
+        <label className="popup__item-control">
+          <input
+            name="avatar"
+            type="URL"
+            className="popup__item popup__item_type_name"
+            //value=""
+            placeholder="Ссылка"
+            required
+          />
+          <span className="popup__item-error" id="avatar-error"></span>
+        </label>
+      </PopupWithForm>
       <PopupWithForm
         name="add-element"
         title="Новое место"
