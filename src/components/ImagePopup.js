@@ -1,7 +1,6 @@
 import React from "react";
 
 function ImagePopup({ onClose, card }) {
-  console.log(card);
   return (
     <div
       className={`popup popup_function_open-element ${

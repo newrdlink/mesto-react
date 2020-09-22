@@ -1,7 +1,6 @@
 import React from "react";
 
 function Card({ card, handleCardClick }) {
-  //console.log(card._id);
   return (
     <li className="element">
       <img

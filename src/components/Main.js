@@ -4,12 +4,11 @@ import api from "../utils/Api";
 import Card from "../components/Card";
 
 function Main({ onEditProfile, onAddPlace, onEditAvatar, handleCardClick }) {
-  // хук состояния userData и Cards
   const [userName, setUserName] = useState("");
   const [userDescription, setUserDescription] = useState("");
   const [userAvatar, setUserAvatar] = useState("");
   const [cards, setCards] = useState([]);
-  // хук эффект при монтировании компонента
+
   useEffect(() => {
     api
       .getAppStartInfo()

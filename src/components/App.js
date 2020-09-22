@@ -15,7 +15,6 @@ function App() {
   );
   const [isAddPlacePopupOpen, setIsAddPlacePopupOpen] = React.useState(false);
   const [selectedCard, setSelectedCard] = useState({});
-  // const [card, setCard] = useState([null]);
   // открытие попапа для редактирования аватара
   const handleEditAvatarClick = () => {
     setIsEditAvatarPopupOpen(true);
@@ -38,10 +37,8 @@ function App() {
   //
   const handleCardClick = (selectedCard) => {
     setSelectedCard(selectedCard);
-    //setCard(data);
   };
-  //console.log(selectedCard);
-  //
+
   return (
     <div className="root">
       <div className="page">
