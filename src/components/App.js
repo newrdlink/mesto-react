@@ -1,12 +1,21 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Header from "../components/Header";
 import PopupWithForm from "../components/PopupWithForm";
 import ImagePopup from "../components/ImagePopup";
 import Main from "../components/Main";
 import Footer from "../components/Footer";
+import api from "../utils/Api";
 import "../index.css";
 
 function App() {
+  // переменная состояния currentUser для данных пользователя
+  const [currentUser, setCurrentUser] = useState({});
+  useEffect(() => {
+    api.getUserData().then(res => {
+      setCurrentUser(res)
+    })
+  }, [])
+  console.log(currentUser)
   const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] = React.useState(
     false
   );
