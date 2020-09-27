@@ -95,7 +95,7 @@ class Api extends React.Component {
     });
   }
 
-  likeCard(cardID) {
+  changeLikeCardStatus(cardID) {
     return fetch(`${this.address}/${this._groupId}/cards/likes/${cardID}`, {
       method: "PUT",
       headers: this.headers,
