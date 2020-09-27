@@ -12,8 +12,9 @@ function App() {
   // переменная состояния currentUser для данных пользователя
   const [currentUser, setCurrentUser] = useState({});
   useEffect(() => {
-    api.getUserData().then((res) => {
-      setCurrentUser(res);
+    api.getAppStartInfo().then((res) => {
+      const [userDataBackend, cardsBackend] = res;
+      setCurrentUser(userDataBackend);
     });
   }, []);
   //console.log(currentUser)
