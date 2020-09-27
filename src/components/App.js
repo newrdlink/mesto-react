@@ -76,7 +76,7 @@ function App() {
               className="popup__item popup__item_type_name"
               //value=""
               //autoComplete="off"
-              placeholder="Рашетников"
+              placeholder={currentUser.name}
               minLength="2"
               maxLength="40"
               required
