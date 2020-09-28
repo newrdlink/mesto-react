@@ -9,7 +9,6 @@ function Main({ onEditProfile, onAddPlace, onEditAvatar, handleCardClick }) {
   const currentUser = React.useContext(CurrentUserContext);
 
   const dislikeCard = (card) => {
-    const isLiked = card.likes.some((i) => i._id === currentUser._id);
     api.dislikeCard(card._id).then((newCard) => {
       const newCards = cards.map((c) => (c._id === card._id ? newCard : c));
       setCards(newCards);
@@ -18,9 +17,14 @@ function Main({ onEditProfile, onAddPlace, onEditAvatar, handleCardClick }) {
 
   const likeCard = (card) => {
     api.likeCard(card._id).then((newCard) => {
-      // Формируем новый массив на основе имеющегося, подставляя в него новую карточку
       const newCards = cards.map((c) => (c._id === card._id ? newCard : c));
-      // Обновляем стейт
+      setCards(newCards);
+    }, []);
+  };
+
+  const handleCardDelete = (card) => {
+    api.removeCard(card._id).then((newCard) => {
+      const newCards = cards.map((c) => (c._id === card._id ? newCard : c));
       setCards(newCards);
     }, []);
   };
@@ -65,6 +69,7 @@ function Main({ onEditProfile, onAddPlace, onEditAvatar, handleCardClick }) {
               handleCardClick={handleCardClick}
               onCardLike={likeCard}
               onCardDislike={dislikeCard}
+              onCardDelete={handleCardDelete}
             />
           ))}
         </ul>

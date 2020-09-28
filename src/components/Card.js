@@ -1,16 +1,19 @@
 import React from "react";
 import { CurrentUserContext } from "../contexts/CurrentUserContext";
 
-function Card({ card, handleCardClick, onCardLike, onCardDislike }) {
+function Card({
+  card,
+  handleCardClick,
+  onCardLike,
+  onCardDislike,
+  handleCardDelete,
+}) {
   const currentUser = React.useContext(CurrentUserContext);
-  // Определяем, являемся ли мы владельцем текущей карточки
   const isOwn = card.owner._id === currentUser._id;
   const cardDeleteButtonClassName = `element__basket ${
     !isOwn && "element__basket_hidden"
   }`;
-  // Определяем, есть ли у карточки лайк, поставленный текущим пользователем
   const isLiked = card.likes.some((i) => i._id === currentUser._id);
-  //console.log(isLiked);
   const cardIsLikedClassName = `element__heart ${
     isLiked ? "element__heart_active" : ""
   }`;
@@ -22,7 +25,13 @@ function Card({ card, handleCardClick, onCardLike, onCardDislike }) {
         className="element__image"
         onClick={() => handleCardClick(card)}
       />
-      <button type="button" className={cardDeleteButtonClassName}></button>
+      <button
+        type="button"
+        className={cardDeleteButtonClassName}
+        onClick={() => {
+          handleCardDelete(card);
+        }}
+      ></button>
       <div className="element__content">
         <h3 className="element__title">{card.name}</h3>
         <div className="element__likes">
