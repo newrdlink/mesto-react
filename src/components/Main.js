@@ -8,7 +8,7 @@ function Main({ onEditProfile, onAddPlace, onEditAvatar, handleCardClick }) {
   const [cards, setCards] = useState([]);
   const currentUser = React.useContext(CurrentUserContext);
 
-  const handleCardDislike = (card) => {
+  const dislikeCard = (card) => {
     // Снова проверяем, есть ли уже лайк на этой карточке
     const isLiked = card.likes.some((i) => i._id === currentUser._id);
     console.log("клик дислайк");
@@ -21,7 +21,7 @@ function Main({ onEditProfile, onAddPlace, onEditAvatar, handleCardClick }) {
     }, []);
   };
 
-  function likeCard(card) {
+  const likeCard = (card) => {
     // Снова проверяем, есть ли уже лайк на этой карточке
     const isLiked = card.likes.some((i) => i._id === currentUser._id);
     console.log("клик лайк");
@@ -73,7 +73,7 @@ function Main({ onEditProfile, onAddPlace, onEditAvatar, handleCardClick }) {
               card={card}
               handleCardClick={handleCardClick}
               onCardLike={likeCard}
-              onCardDislike={handleCardDislike}
+              onCardDislike={dislikeCard}
             />
           ))}
         </ul>
