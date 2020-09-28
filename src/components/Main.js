@@ -9,30 +9,21 @@ function Main({ onEditProfile, onAddPlace, onEditAvatar, handleCardClick }) {
   const currentUser = React.useContext(CurrentUserContext);
 
   const dislikeCard = (card) => {
-    // Снова проверяем, есть ли уже лайк на этой карточке
     const isLiked = card.likes.some((i) => i._id === currentUser._id);
-    console.log("клик дислайк");
-    // Отправляем запрос в API и получаем обновлённые данные карточки
-    api.dislikeCard(card._id, !isLiked).then((newCard) => {
+    api.dislikeCard(card._id).then((newCard) => {
+      const newCards = cards.map((c) => (c._id === card._id ? newCard : c));
+      setCards(newCards);
+    }, []);
+  };
+
+  const likeCard = (card) => {
+    api.likeCard(card._id).then((newCard) => {
       // Формируем новый массив на основе имеющегося, подставляя в него новую карточку
       const newCards = cards.map((c) => (c._id === card._id ? newCard : c));
       // Обновляем стейт
       setCards(newCards);
     }, []);
   };
-
-  const likeCard = (card) => {
-    // Снова проверяем, есть ли уже лайк на этой карточке
-    const isLiked = card.likes.some((i) => i._id === currentUser._id);
-    console.log("клик лайк");
-    // Отправляем запрос в API и получаем обновлённые данные карточки
-    api.likeCard(card._id, /*!isLiked*/).then((newCard) => {
-      // Формируем новый массив на основе имеющегося, подставляя в него новую карточку
-      const newCards = cards.map((c) => (c._id === card._id ? newCard : c));
-      // Обновляем стейт
-      setCards(newCards);
-    }, []);
-  }
 
   useEffect(() => {
     api
