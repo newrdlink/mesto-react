@@ -59,6 +59,9 @@ function App() {
     false
   );
   const [isAddPlacePopupOpen, setIsAddPlacePopupOpen] = React.useState(false);
+  //
+  
+  //
   const [selectedCard, setSelectedCard] = useState({});
   // открытие попапа для редактирования аватара
   const handleEditAvatarClick = () => {

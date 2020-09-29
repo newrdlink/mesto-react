@@ -1,11 +1,13 @@
 import React from "react";
 
 function ImagePopup({ onClose, card }) {
+  //
   return (
     <div
       className={`popup popup_function_open-element ${
         Object.keys(card).length > 0 ? "popup_opened" : ""
       }`}
+      onClick={(evt) => (evt.target === evt.currentTarget ? onClose() : false)}
     >
       <figure className="popup__image-content">
         <button

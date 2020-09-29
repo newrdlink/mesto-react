@@ -1,6 +1,6 @@
 import React from "react";
-import { useState, useEffect } from "react";
-import api from "../utils/Api";
+//import { useState, useEffect } from "react";
+//import api from "../utils/Api";
 import Card from "../components/Card";
 import { CurrentUserContext } from "../contexts/CurrentUserContext";
 
