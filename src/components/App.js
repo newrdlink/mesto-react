@@ -9,6 +9,40 @@ import { CurrentUserContext } from "../contexts/CurrentUserContext";
 import "../index.css";
 
 function App() {
+  // перенос с main
+  const [cards, setCards] = useState([]);
+  useEffect(() => {
+    api
+      .getAppStartInfo()
+      .then((data) => {
+        const [userData, cardsBackend] = data;
+        setCards(cardsBackend);
+      })
+      .catch((err) => console.error(err));
+  }, []);
+  // лайки и дизлайки
+  const dislikeCard = (card) => {
+    api.dislikeCard(card._id).then((newCard) => {
+      const newCards = cards.map((c) => (c._id === card._id ? newCard : c));
+      setCards(newCards);
+    }, []);
+  };
+
+  const likeCard = (card) => {
+    api.likeCard(card._id).then((newCard) => {
+      const newCards = cards.map((c) => (c._id === card._id ? newCard : c));
+      setCards(newCards);
+    }, []);
+  };
+  //
+  const handleCardDelete = (card) => {
+    console.log("Привет! Я удаление!");
+    api.removeCard(card._id).then((newCard) => {
+      const newCards = cards.filter((c) => (c._id === card._id ? newCard : c));
+      setCards(newCards);
+    }, []);
+  };
+  //
   // переменная состояния currentUser для данных пользователя
   const [currentUser, setCurrentUser] = useState({});
   useEffect(() => {
@@ -60,6 +94,11 @@ function App() {
             onEditProfile={handleEditProfileClick}
             onAddPlace={handleAddPlaceClick}
             handleCardClick={handleCardClick}
+            cards={cards}
+            setCards={setCards}
+            likeCard={likeCard}
+            dislikeCard={dislikeCard}
+            handleCardDelete={handleCardDelete}
           ></Main>
           <Footer />
         </div>
