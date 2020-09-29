@@ -17,6 +17,7 @@ function Main({ onEditProfile, onAddPlace, onEditAvatar, handleCardClick }) {
 
   const likeCard = (card) => {
     api.likeCard(card._id).then((newCard) => {
+      //console.log(newCard);
       const newCards = cards.map((c) => (c._id === card._id ? newCard : c));
       setCards(newCards);
     }, []);
@@ -24,7 +25,7 @@ function Main({ onEditProfile, onAddPlace, onEditAvatar, handleCardClick }) {
 
   const handleCardDelete = (card) => {
     api.removeCard(card._id).then((newCard) => {
-      const newCards = cards.map((c) => (c._id === card._id ? newCard : c));
+      const newCards = cards.filter((c) => (c._id === card._id ? newCard : c));
       setCards(newCards);
     }, []);
   };
