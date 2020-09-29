@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Header from "../components/Header";
 import PopupWithForm from "../components/PopupWithForm";
+import EditProfilePopup from "../components/EditProfilePopup";
 import ImagePopup from "../components/ImagePopup";
 import Main from "../components/Main";
 import Footer from "../components/Footer";
@@ -62,7 +63,6 @@ function App() {
   );
   const [isAddPlacePopupOpen, setIsAddPlacePopupOpen] = React.useState(false);
   //
-
   //
   const [selectedCard, setSelectedCard] = useState({});
   // открытие попапа для редактирования аватара
@@ -71,6 +71,7 @@ function App() {
   };
   // открытия попапа для редактирования профиля
   const handleEditProfileClick = () => {
+    console.log("открытие попапа edit");
     setIsEditProfilePopupOpen(true);
   };
   // открытие попапа для добавление новой карточки
@@ -107,7 +108,7 @@ function App() {
           ></Main>
           <Footer />
         </div>
-        <PopupWithForm
+        {/* <PopupWithForm
           name="edit"
           title="Редактировать профиль"
           buttonName="Сохранить"
@@ -142,7 +143,11 @@ function App() {
             />
             <span className="popup__item-error" id="about-error"></span>
           </label>
-        </PopupWithForm>
+        </PopupWithForm> */}
+        <EditProfilePopup
+          isOpen={isEditProfilePopupOpen}
+          onClose={closeAllPopups}
+        />
         <ImagePopup card={selectedCard} onClose={closeAllPopups} />
         <PopupWithForm
           name="edit-avatar"
