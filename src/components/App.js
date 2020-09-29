@@ -9,8 +9,9 @@ import { CurrentUserContext } from "../contexts/CurrentUserContext";
 import "../index.css";
 
 function App() {
-  // перенос с main
+  // создание стейта для хранения карточек
   const [cards, setCards] = useState([]);
+  // эффект для запроса данных с сервера
   useEffect(() => {
     api
       .getAppStartInfo()
@@ -37,8 +38,9 @@ function App() {
   //
   const handleCardDelete = (card) => {
     console.log("Привет! Я удаление!");
-    api.removeCard(card._id).then((newCard) => {
-      const newCards = cards.filter((c) => (c._id === card._id ? newCard : c));
+    api.removeCard(card._id).then(() => {
+      console.log(card._id);
+      const newCards = cards.filter((c) => c._id !== card._id);
       setCards(newCards);
     }, []);
   };
@@ -60,7 +62,7 @@ function App() {
   );
   const [isAddPlacePopupOpen, setIsAddPlacePopupOpen] = React.useState(false);
   //
-  
+
   //
   const [selectedCard, setSelectedCard] = useState({});
   // открытие попапа для редактирования аватара
