@@ -24,8 +24,6 @@ export default function EditProfilePopup({ isOpen, onClose, onUpdateUser }) {
     evt.preventDefault();
   }
   //
-
-  //
   return (
     <section
       className={`popup popup_function_edit ${isOpen ? "popup_opened" : ""}`}

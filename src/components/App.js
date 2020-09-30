@@ -46,7 +46,7 @@ function App() {
       setCards(newCards);
     }, []);
   };
-  // переменная состояния currentUser для данных пользователя
+  // переменная состояния для данных пользователя
   const [currentUser, setCurrentUser] = useState({});
   //
   const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] = React.useState(
@@ -58,15 +58,12 @@ function App() {
   const [isAddPlacePopupOpen, setIsAddPlacePopupOpen] = React.useState(false);
   //
   const [selectedCard, setSelectedCard] = useState({});
-  // открытие попапа для редактирования аватара
   const handleEditAvatarClick = () => {
     setIsEditAvatarPopupOpen(true);
   };
-  // открытия попапа для редактирования профиля
   const handleEditProfileClick = () => {
     setIsEditProfilePopupOpen(true);
   };
-  // открытие попапа для добавление новой карточки
   const handleAddPlaceClick = () => {
     setIsAddPlacePopupOpen(true);
   };
