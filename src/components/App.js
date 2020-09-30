@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import Header from "../components/Header";
 import PopupWithForm from "../components/PopupWithForm";
 import EditProfilePopup from "../components/EditProfilePopup";
+import EditAvatarPopup from "../components/EditAvatarPopup";
 import ImagePopup from "../components/ImagePopup";
 import Main from "../components/Main";
 import Footer from "../components/Footer";
@@ -10,6 +11,8 @@ import { CurrentUserContext } from "../contexts/CurrentUserContext";
 import "../index.css";
 
 function App() {
+  // переменная состояния userAvatar
+  const [userAvatar, setUserAvatar] = useState({});
   // создание стейта для хранения карточек
   const [cards, setCards] = useState([]);
   // эффект для запроса данных с сервера
@@ -17,11 +20,12 @@ function App() {
     api
       .getAppStartInfo()
       .then((data) => {
-        const [userData, cardsBackend] = data;
+        const [userDataBackend, cardsBackend] = data;
         setCards(cardsBackend);
+        setCurrentUser(userDataBackend);
       })
       .catch((err) => console.error(err));
-  }, []);
+  }, [userAvatar]);
   // лайки и дизлайки
   const dislikeCard = (card) => {
     api.dislikeCard(card._id).then((newCard) => {
@@ -38,23 +42,15 @@ function App() {
   };
   //
   const handleCardDelete = (card) => {
-    console.log("Привет! Я удаление!");
     api.removeCard(card._id).then(() => {
       console.log(card._id);
       const newCards = cards.filter((c) => c._id !== card._id);
       setCards(newCards);
     }, []);
   };
-  //
   // переменная состояния currentUser для данных пользователя
   const [currentUser, setCurrentUser] = useState({});
-  useEffect(() => {
-    api.getAppStartInfo().then((res) => {
-      const [userDataBackend, cardsBackend] = res;
-      setCurrentUser(userDataBackend);
-    });
-  }, []);
-  //console.log(currentUser)
+  //
   const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] = React.useState(
     false
   );
@@ -63,7 +59,6 @@ function App() {
   );
   const [isAddPlacePopupOpen, setIsAddPlacePopupOpen] = React.useState(false);
   //
-  //
   const [selectedCard, setSelectedCard] = useState({});
   // открытие попапа для редактирования аватара
   const handleEditAvatarClick = () => {
@@ -71,7 +66,6 @@ function App() {
   };
   // открытия попапа для редактирования профиля
   const handleEditProfileClick = () => {
-    console.log("открытие попапа edit");
     setIsEditProfilePopupOpen(true);
   };
   // открытие попапа для добавление новой карточки
@@ -100,7 +94,16 @@ function App() {
       .catch((err) => console.error(err));
   };
   //
-
+  const handleUpdateUserAvatar = (data) => {
+    api
+      .changeAvatar(data)
+      .then((userAvatar) => {
+        setUserAvatar(userAvatar);
+        closeAllPopups();
+      })
+      .catch((err) => console.error(err));
+  };
+  //
   return (
     <CurrentUserContext.Provider value={currentUser}>
       <div className="root">
@@ -125,25 +128,11 @@ function App() {
           onUpdateUser={handleUpdateUser}
         />
         <ImagePopup card={selectedCard} onClose={closeAllPopups} />
-        <PopupWithForm
-          name="edit-avatar"
-          title="Обновить аватар"
-          buttonName="Изменить"
-          isOpen={isEditAvatarPopupOpen ? "popup_opened" : ""}
+        <EditAvatarPopup
+          isOpen={isEditAvatarPopupOpen}
           onClose={closeAllPopups}
-        >
-          <label className="popup__item-control">
-            <input
-              name="avatar"
-              type="URL"
-              className="popup__item popup__item_type_name"
-              //value=""
-              placeholder="Ссылка"
-              required
-            />
-            <span className="popup__item-error" id="avatar-error"></span>
-          </label>
-        </PopupWithForm>
+          onUpdateUserAvatar={handleUpdateUserAvatar}
+        />
         <PopupWithForm
           name="add-element"
           title="Новое место"
