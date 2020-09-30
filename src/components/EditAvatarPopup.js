@@ -6,7 +6,7 @@ export default function EditAvatarPopup({
   onClose,
   onUpdateUserAvatar,
 }) {
-  const inputValue = useRef(null);  //
+  const inputValue = useRef(null); //
   const handleSubmit = (evt) => {
     evt.preventDefault();
     const data = {
@@ -41,17 +41,14 @@ export default function EditAvatarPopup({
               <input
                 name="avatar"
                 type="URL"
-                className="popup__item popup__item_type_name"                
+                className="popup__item popup__item_type_name"
                 placeholder="Ссылка"
                 required
                 ref={inputValue}
               />
               <span className="popup__item-error" id="avatar-error"></span>
             </label>
-            <button
-              type="submit"
-              className="popup__button popup__button_disabled"
-            >
+            <button type="submit" className="popup__button">
               Изменить аватар
             </button>
           </fieldset>

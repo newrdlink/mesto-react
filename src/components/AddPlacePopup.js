@@ -68,10 +68,7 @@ export default function AddPlacePopup({ onClose, isOpen, addNewPlace }) {
                 id="link-element-error"
               ></span>
             </label>
-            <button
-              type="submit"
-              className="popup__button popup__button_disabled"
-            >
+            <button type="submit" className="popup__button">
               Добавить новое место
             </button>
           </fieldset>

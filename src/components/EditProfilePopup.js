@@ -72,10 +72,7 @@ export default function EditProfilePopup({ isOpen, onClose, onUpdateUser }) {
               />
               <span className="popup__item-error" id="about-error"></span>
             </label>
-            <button
-              type="submit"
-              className="popup__button popup__button_disabled"
-            >
+            <button type="submit" className="popup__button">
               Сохранить
             </button>
           </fieldset>
