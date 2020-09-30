@@ -36,7 +36,7 @@ class Api extends React.Component {
     });
   }
 
-  patchUserData({ data }) {
+  patchUserData(data) {
     return fetch(`${this.address}/${this._groupId}/users/me`, {
       method: "PATCH",
       headers: this.headers,

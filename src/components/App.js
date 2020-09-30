@@ -89,6 +89,17 @@ function App() {
   const handleCardClick = (selectedCard) => {
     setSelectedCard(selectedCard);
   };
+  //
+  const handleUpdateUser = (data) => {
+    api
+      .patchUserData(data)
+      .then((userData) => {
+        setCurrentUser(userData);
+        closeAllPopups();
+      })
+      .catch((err) => console.error(err));
+  };
+  //
 
   return (
     <CurrentUserContext.Provider value={currentUser}>
@@ -108,45 +119,10 @@ function App() {
           ></Main>
           <Footer />
         </div>
-        {/* <PopupWithForm
-          name="edit"
-          title="Редактировать профиль"
-          buttonName="Сохранить"
-          isOpen={isEditProfilePopupOpen ? "popup_opened" : ""}
-          onClose={closeAllPopups}
-        >
-          <label className="popup__item-control">
-            <input
-              name="name"
-              type="text"
-              className="popup__item popup__item_type_name"
-              //value=""
-              //autoComplete="off"
-              placeholder={currentUser.name}
-              minLength="2"
-              maxLength="40"
-              required
-            />
-            <span className="popup__item-error" id="name-error"></span>
-          </label>
-          <label className="popup__item-control">
-            <input
-              name="about"
-              type="text"
-              className="popup__item popup__item_type_about"
-              //value=""
-              //autoСomplete="off"
-              placeholder="Опять двойка"
-              minLength="2"
-              maxLength="200"
-              required
-            />
-            <span className="popup__item-error" id="about-error"></span>
-          </label>
-        </PopupWithForm> */}
         <EditProfilePopup
           isOpen={isEditProfilePopupOpen}
           onClose={closeAllPopups}
+          onUpdateUser={handleUpdateUser}
         />
         <ImagePopup card={selectedCard} onClose={closeAllPopups} />
         <PopupWithForm

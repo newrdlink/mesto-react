@@ -1,7 +1,29 @@
 import React from "react";
+import { useState } from "react";
+import { CurrentUserContext } from "../contexts/CurrentUserContext";
 
-export default function EditProfilePopup({ isOpen, onClose }) {
-  console.log(isOpen);
+export default function EditProfilePopup({ isOpen, onClose, onUpdateUser }) {
+  const currentUser = React.useContext(CurrentUserContext);
+
+  const [name, setName] = useState("");
+  const [description, setDescription] = useState("");
+
+  const handleChangeName = (e) => {
+    setName(e.target.value);
+  };
+  const handleChangeDescription = (e) => {
+    setDescription(e.target.value);
+  };
+
+  function handleSubmit(evt) {
+    const data = {
+      name: name,
+      about: description,
+    };
+    onUpdateUser(data);
+    evt.preventDefault();
+  }  
+  //
   return (
     <section
       className={`popup popup_function_edit ${isOpen ? "popup_opened" : ""}`}
@@ -13,16 +35,21 @@ export default function EditProfilePopup({ isOpen, onClose }) {
           onClick={onClose}
         ></button>
         <h2 className="popup__title">Редактирование профиля</h2>
-        <form name="profile" className="popup__popup" noValidate>
+        <form
+          name="profile"
+          className="popup__popup"
+          noValidate
+          onSubmit={handleSubmit}
+        >
           <fieldset className="popup__content">
             <label className="popup__item-control">
               <input
                 name="name"
                 type="text"
                 className="popup__item popup__item_type_name"
-                //value=""
-                //autoComplete="off"
-                //placeholder={currentUser.name}
+                value={name}
+                onChange={handleChangeName}
+                placeholder={currentUser.name}
                 minLength="2"
                 maxLength="40"
                 required
@@ -34,9 +61,9 @@ export default function EditProfilePopup({ isOpen, onClose }) {
                 name="about"
                 type="text"
                 className="popup__item popup__item_type_about"
-                //value=""
-                //autoСomplete="off"
-                placeholder="Опять двойка"
+                value={description}
+                onChange={handleChangeDescription}
+                placeholder={currentUser.about}
                 minLength="2"
                 maxLength="200"
                 required
