@@ -22,11 +22,14 @@ export default function EditProfilePopup({ isOpen, onClose, onUpdateUser }) {
     };
     onUpdateUser(data);
     evt.preventDefault();
-  }  
+  }
+  //
+
   //
   return (
     <section
       className={`popup popup_function_edit ${isOpen ? "popup_opened" : ""}`}
+      onClick={(evt) => (evt.target === evt.currentTarget ? onClose() : false)}
     >
       <div className="popup__container">
         <button

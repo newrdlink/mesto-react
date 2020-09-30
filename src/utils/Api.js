@@ -52,13 +52,13 @@ class Api extends React.Component {
     });
   }
 
-  addNewCard({ data }) {
+  addNewCard(data) {
     return fetch(`${this.address}/${this._groupId}/cards`, {
       method: "POST",
       headers: this.headers,
       body: JSON.stringify({
-        name: data["name-element"],
-        link: data["link-element"],
+        name: data.name,
+        link: data.link,
       }),
     }).then((res) => {
       if (res.ok) {
@@ -119,7 +119,6 @@ class Api extends React.Component {
     });
   }
 }
-
 //создаем экземпляр API
 const api = new Api({
   address: "https://mesto.nomoreparties.co/v1",

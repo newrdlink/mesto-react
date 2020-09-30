@@ -14,13 +14,14 @@ export default function EditAvatarPopup({
     const data = {
       avatar: inputValue.current.value,
     };
-    onUpdateUserAvatar(data);    
+    onUpdateUserAvatar(data);
   };
   return (
     <section
       className={`popup popup_function_edit-avatar ${
         isOpen ? "popup_opened" : ""
       }`}
+      onClick={(evt) => (evt.target === evt.currentTarget ? onClose() : false)}
     >
       <div className="popup__container">
         <button
