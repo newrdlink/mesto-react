@@ -5,13 +5,14 @@ export default function AddPlacePopup({ onClose, isOpen, addNewPlace }) {
   const inputNamePlace = useRef("");
   const inputUrlPlace = useRef("");
 
-  const onSubmit = (evt) => {   
+  const onSubmit = (evt) => {
     evt.preventDefault();
     const data = {
       name: inputNamePlace.current.value,
       link: inputUrlPlace.current.value,
     };
     addNewPlace(data);
+    evt.target.reset();
   };
 
   return (

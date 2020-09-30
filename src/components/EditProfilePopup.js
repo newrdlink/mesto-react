@@ -22,6 +22,7 @@ export default function EditProfilePopup({ isOpen, onClose, onUpdateUser }) {
     };
     onUpdateUser(data);
     evt.preventDefault();
+    evt.target.reset();
   }
   //
   return (

@@ -6,16 +6,16 @@ export default function EditAvatarPopup({
   onClose,
   onUpdateUserAvatar,
 }) {
-  //
-  const inputValue = useRef(null);
-
+  const inputValue = useRef(null);  //
   const handleSubmit = (evt) => {
     evt.preventDefault();
     const data = {
       avatar: inputValue.current.value,
     };
     onUpdateUserAvatar(data);
+    evt.target.reset();
   };
+  //
   return (
     <section
       className={`popup popup_function_edit-avatar ${
@@ -41,8 +41,7 @@ export default function EditAvatarPopup({
               <input
                 name="avatar"
                 type="URL"
-                className="popup__item popup__item_type_name"
-                //value=""
+                className="popup__item popup__item_type_name"                
                 placeholder="Ссылка"
                 required
                 ref={inputValue}
