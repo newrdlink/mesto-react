@@ -1,4 +1,5 @@
 import React from "react";
+import handleResponse from "./utils";
 
 class Api extends React.Component {
   constructor({ address, headers }) {
@@ -16,24 +17,14 @@ class Api extends React.Component {
     return fetch(`${this.address}/${this._groupId}/cards`, {
       method: "GET",
       headers: this.headers,
-    }).then((res) => {
-      if (res.ok) {
-        return res.json();
-      }
-      return Promise.reject(`Извините, ошибка: ${res.status}`);
-    });
+    }).then(handleResponse);
   }
 
   getUserData() {
     return fetch(`${this.address}/${this._groupId}/users/me`, {
       method: "GET",
       headers: this.headers,
-    }).then((res) => {
-      if (res.ok) {
-        return res.json();
-      }
-      return Promise.reject(`Извините, ошибка: ${res.status}`);
-    });
+    }).then(handleResponse);
   }
 
   patchUserData(data) {
@@ -44,12 +35,7 @@ class Api extends React.Component {
         name: data.name,
         about: data.about,
       }),
-    }).then((res) => {
-      if (res.ok) {
-        return res.json();
-      }
-      return Promise.reject(`Извините, ошибка: ${res.status}`);
-    });
+    }).then(handleResponse);
   }
 
   addNewCard(data) {
@@ -60,12 +46,7 @@ class Api extends React.Component {
         name: data.name,
         link: data.link,
       }),
-    }).then((res) => {
-      if (res.ok) {
-        return res.json();
-      }
-      return Promise.reject(`Извините, ошибка: ${res.status}`);
-    });
+    }).then(handleResponse);
   }
 
   changeAvatar(data) {
@@ -75,48 +56,28 @@ class Api extends React.Component {
       body: JSON.stringify({
         avatar: data.avatar,
       }),
-    }).then((res) => {
-      if (res.ok) {
-        return res.json();
-      }
-      return Promise.reject(`Извините, ошибка: ${res.status}`);
-    });
+    }).then(handleResponse);
   }
 
   removeCard(cardID) {
     return fetch(`${this.address}/${this._groupId}/cards/${cardID}`, {
       method: "DELETE",
       headers: this.headers,
-    }).then((res) => {
-      if (res.ok) {
-        return res.json();
-      }
-      return Promise.reject(`Извините, ошибка: ${res.status}`);
-    });
+    }).then(handleResponse);
   }
 
   likeCard(cardID) {
     return fetch(`${this.address}/${this._groupId}/cards/likes/${cardID}`, {
       method: "PUT",
       headers: this.headers,
-    }).then((res) => {
-      if (res.ok) {
-        return res.json();
-      }
-      return Promise.reject(`Извините, ошибка: ${res.status}`);
-    });
+    }).then(handleResponse);
   }
 
   dislikeCard(cardID) {
     return fetch(`${this.address}/${this._groupId}/cards/likes/${cardID}`, {
       method: "DELETE",
       headers: this.headers,
-    }).then((res) => {
-      if (res.ok) {
-        return res.json();
-      }
-      return Promise.reject(`Извините, ошибка: ${res.status}`);
-    });
+    }).then(handleResponse);
   }
 }
 //создаем экземпляр API

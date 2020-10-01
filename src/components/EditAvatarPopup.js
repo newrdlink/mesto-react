@@ -21,7 +21,7 @@ export default function EditAvatarPopup({
       className={`popup popup_function_edit-avatar ${
         isOpen ? "popup_opened" : ""
       }`}
-      onClick={(evt) => (evt.target === evt.currentTarget ? onClose() : false)}
+      onClick={(evt) => evt.target === evt.currentTarget && onClose()}
     >
       <div className="popup__container">
         <button

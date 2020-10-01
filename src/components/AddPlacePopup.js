@@ -20,7 +20,7 @@ export default function AddPlacePopup({ onClose, isOpen, addNewPlace }) {
       className={`popup popup_function_add-element ${
         isOpen ? "popup_opened" : ""
       }`}
-      onClick={(evt) => (evt.target === evt.currentTarget ? onClose() : false)}
+      onClick={(evt) => evt.target === evt.currentTarget && onClose()}
     >
       <div className="popup__container">
         <button

@@ -35,9 +35,7 @@ function Card({
             className={`element__heart ${
               isLiked ? "element__heart_active" : ""
             }`}
-            onClick={
-              isLiked ? () => onCardDislike(card) : () => onCardLike(card)
-            }
+            onClick={() => isLiked ? onCardDislike(card) : onCardLike(card)}
           ></button>
           <span className="element__number-likes">{card.likes.length}</span>
         </div>

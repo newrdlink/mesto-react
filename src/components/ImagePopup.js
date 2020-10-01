@@ -1,15 +1,14 @@
 import React from "react";
 import { useRef } from "react";
+import classNames from "classnames/bind";
 
 function ImagePopup({ onClose, card }) {
-  //
   const imageContainer = useRef(null);
-  //
   return (
     <div
-      className={`popup popup_function_open-element ${
-        Object.keys(card).length > 0 ? "popup_opened" : ""
-      }`}
+      className={classNames("popup", "popup_function_open-element", {
+        popup_opened: Object.keys(card).length,
+      })}
       onClick={(evt) => (evt.target === evt.currentTarget ? onClose() : false)}
     >
       <figure className="popup__image-content" ref={imageContainer}>

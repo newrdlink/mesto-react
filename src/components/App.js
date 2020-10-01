@@ -30,21 +30,21 @@ function App() {
     api.dislikeCard(card._id).then((newCard) => {
       const newCards = cards.map((c) => (c._id === card._id ? newCard : c));
       setCards(newCards);
-    }, []);
+    });
   };
 
   const likeCard = (card) => {
     api.likeCard(card._id).then((newCard) => {
       const newCards = cards.map((c) => (c._id === card._id ? newCard : c));
       setCards(newCards);
-    }, []);
+    });
   };
   //
   const handleCardDelete = (card) => {
     api.removeCard(card._id).then(() => {
       const newCards = cards.filter((c) => c._id !== card._id);
       setCards(newCards);
-    }, []);
+    });
   };
   // переменная состояния для данных пользователя
   const [currentUser, setCurrentUser] = useState({});
